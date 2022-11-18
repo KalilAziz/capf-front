@@ -31,8 +31,6 @@ export const HeaderComponent = () => {
   const { state, dispatch } = useContext(ThemeContext)
 
   useEffect(() => {
-    if (state.light !== undefined) {
-    }
     window.localStorage.setItem('theme', state.theme)
   }, [state.theme])
 
