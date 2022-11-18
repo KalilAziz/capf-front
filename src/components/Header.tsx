@@ -14,8 +14,8 @@ import { setTheme } from '../context/themeContext/actions'
 
 const ButtonTheme = styled('button', {
   all: 'unset',
-  cursor: 'pointer',
   display: 'flex',
+  cursor: 'pointer',
   alignItems: 'center',
   justifyContent: 'center',
   width: '30px',
@@ -32,8 +32,8 @@ export const HeaderComponent = () => {
 
   useEffect(() => {
     if (state.light !== undefined) {
-      window.localStorage.setItem('theme', state.theme)
     }
+    window.localStorage.setItem('theme', state.theme)
   }, [state.theme])
 
   console.log(state.light)
