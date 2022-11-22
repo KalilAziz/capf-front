@@ -9,7 +9,7 @@ globalStyles()
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <ThemeProvider enableColorScheme={false} defaultTheme="dark">
+      <ThemeProvider enableColorScheme={false}>
         <HeaderComponent />
         <Component {...pageProps} />
         <FooterComponent />

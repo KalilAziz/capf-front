@@ -1,5 +1,4 @@
 import { Button, Heading, Text } from '@capfds-ui/react'
-import { useTheme } from 'next-themes'
 import { BsBoxArrowInRight } from 'react-icons/bs'
 import { CarrouselEvents } from '../components/CarouselEvents'
 
@@ -43,11 +42,10 @@ export interface Product {
 }
 
 export default function Home({ products, partnerships }: Product) {
-  const { theme } = useTheme()
   return (
     <>
       <HeroHome />
-      <BackgroundCircle theme={theme}>
+      <BackgroundCircle>
         <CarrouselEvents />
         <Heading size="4xl">
           <Text>Calendário de Eventos</Text>
@@ -87,7 +85,7 @@ export default function Home({ products, partnerships }: Product) {
         <CarouselPartners partnerships={partnerships} />
       </BackgroundNoCircle>
 
-      <BackgroundCircle theme={theme}>
+      <BackgroundCircle>
         <Heading size="2xl">
           <Text css={{ textAlign: 'center' }}>Nossos Produtos</Text>
         </Heading>

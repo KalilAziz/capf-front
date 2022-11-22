@@ -24,87 +24,81 @@ export const HeaderComponent = () => {
   }, [])
 
   return (
-    <Header.Root>
-      <Header.Logo>
-        <Link href="/">
-          <Image src={LogoCapf} alt="Logo" />
-        </Link>
-      </Header.Logo>
-      <Header.Navbar css={{ zIndex: '5' }}>
-        <Header.Ul>
-          <Link href="/" style={LinkStyle}>
-            <Header.Li>Home</Header.Li>
+    mounted && (
+      <Header.Root>
+        <Header.Logo>
+          <Link href="/">
+            <Image src={LogoCapf} alt="Logo" />
           </Link>
-
-          <Link href="/products" style={LinkStyle}>
-            <Header.Li>Produtos</Header.Li>
-          </Link>
-
-          <Header.Li>
-            <Link href="/about-us" style={LinkStyle}>
-              <span>
-                Quem Somos <IoIosArrowDown />
-              </span>
+        </Header.Logo>
+        <Header.Navbar css={{ zIndex: '5' }}>
+          <Header.Ul>
+            <Link href="/" style={LinkStyle}>
+              <Header.Li>Home</Header.Li>
             </Link>
-            <Header.Ul>
-              <Link href="/about-us/contact" style={LinkStyle}>
-                <Header.Li>Contato</Header.Li>
-              </Link>
-              <Link href="/about-us/complaint" style={LinkStyle}>
-                <Header.Li>Reclamações</Header.Li>
-              </Link>
-            </Header.Ul>
-          </Header.Li>
 
-          <Header.Li>
-            <span>
-              Áreas Acadêmicas <IoIosArrowDown />
-            </span>
+            <Link href="/products" style={LinkStyle}>
+              <Header.Li>Produtos</Header.Li>
+            </Link>
 
-            <Header.Ul>
-              <Link href="/academic-areas/student-group" style={LinkStyle}>
-                <Header.Li>Grupo Estudantil</Header.Li>
+            <Header.Li>
+              <Link href="/about-us" style={LinkStyle}>
+                <span>
+                  Quem Somos <IoIosArrowDown />
+                </span>
               </Link>
-              <Link href="/academic-areas/freshman-space" style={LinkStyle}>
-                <Header.Li>Espaço dos Calouros</Header.Li>
-              </Link>
-              <Link href="/academic-areas/colig" style={LinkStyle}>
-                <Header.Li>Colig</Header.Li>
-              </Link>
-            </Header.Ul>
-          </Header.Li>
+              <Header.Ul>
+                <Link href="/about-us/contact" style={LinkStyle}>
+                  <Header.Li>Contato</Header.Li>
+                </Link>
+                <Link href="/about-us/complaint" style={LinkStyle}>
+                  <Header.Li>Reclamações</Header.Li>
+                </Link>
+              </Header.Ul>
+            </Header.Li>
 
-          <Link href="/events" style={LinkStyle}>
-            <Header.Li>Eventos</Header.Li>
-          </Link>
+            <Header.Li>
+              <span>
+                Áreas Acadêmicas <IoIosArrowDown />
+              </span>
 
-          <Header.Li>
-            <Button>
-              <Text colors="green500" size="lg">
-                Login
-              </Text>
-              <BsBoxArrowInRight />
-            </Button>
-          </Header.Li>
-          <Header.Li>
-            <ButtonTheme
-              onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-            >
-              {mounted && (
+              <Header.Ul>
+                <Link href="/academic-areas/student-group" style={LinkStyle}>
+                  <Header.Li>Grupo Estudantil</Header.Li>
+                </Link>
+                <Link href="/academic-areas/freshman-space" style={LinkStyle}>
+                  <Header.Li>Espaço dos Calouros</Header.Li>
+                </Link>
+                <Link href="/academic-areas/colig" style={LinkStyle}>
+                  <Header.Li>Colig</Header.Li>
+                </Link>
+              </Header.Ul>
+            </Header.Li>
+
+            <Link href="/events" style={LinkStyle}>
+              <Header.Li>Eventos</Header.Li>
+            </Link>
+
+            <Header.Li>
+              <Button>
+                <Text colors="green500" size="lg">
+                  Login
+                </Text>
+                <BsBoxArrowInRight />
+              </Button>
+            </Header.Li>
+            <Header.Li>
+              <ButtonTheme
+                onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+              >
                 <Theme>
-                  {theme === 'light' ? (
-                    <BsFillSunFill />
-                  ) : theme === 'dark' ? (
-                    <BsMoon />
-                  ) : (
-                    <div />
-                  )}
+                  {theme === 'light' ? <BsFillSunFill /> : <BsMoon />}
                 </Theme>
-              )}
-            </ButtonTheme>
-          </Header.Li>
-        </Header.Ul>
-      </Header.Navbar>
-    </Header.Root>
+              </ButtonTheme>
+            </Header.Li>
+          </Header.Ul>
+        </Header.Navbar>
+      </Header.Root>
+    )
   )
 }

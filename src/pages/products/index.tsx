@@ -1,19 +1,17 @@
 import { BackgroundNoCircle } from '../../components/BackgroundSession'
 import { Products } from '../../components/Products'
-import { useTheme } from 'next-themes'
 import axios from 'axios'
 import { GetStaticProps } from 'next'
 import { Hero } from '../../components/Hero'
 import Image from 'next/image'
 import HeroProduct from '../../assets/images/HeroProduct.svg'
 export default function Producs({ products }) {
-  const { theme } = useTheme()
   return (
     <>
       <Hero title="Confira nossos Produtos">
         <Image src={HeroProduct} alt="" />
       </Hero>
-      <BackgroundNoCircle theme={theme}>
+      <BackgroundNoCircle>
         <Products products={products} />
       </BackgroundNoCircle>
     </>

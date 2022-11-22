@@ -1,18 +1,34 @@
 import {
   arrowStyles,
+  Button,
   CarouselComponent,
   indicatorStyles,
+  Text,
 } from '@capfds-ui/react'
-import Image from 'next/image'
 import { MdOutlineArrowBackIosNew } from 'react-icons/md'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import DocumentImage from '../../assets/images/document.svg'
+import { useState } from 'react'
+import Image from 'next/image'
+export interface CarouselDocumentProps {
+  documents: {
+    id: number
+    name: string
+    media: {
+      name: string
+      url: string
+    }
+  }[]
+}
 
-export const CarouselPartners = ({ partnerships }) => {
+export const CarrouselDocument = ({ documents }: CarouselDocumentProps) => {
+  console.log(documents[0].media.url)
+  const [isView, setIsView] = useState(false)
+
   return (
     <Carousel
       infiniteLoop
-      // centerMode
       showStatus={false}
       showThumbs={false}
       statusFormatter={(current, total) =>
@@ -69,26 +85,28 @@ export const CarouselPartners = ({ partnerships }) => {
         )
       }}
     >
-      {partnerships.map((item, key) => (
-        <CarouselComponent.Item key={key} style={{ padding: '50px' }}>
+      {documents.map((document, key) => (
+        <CarouselComponent.Item key={key}>
           <CarouselComponent.Content
-            border="full"
             css={{
-              maxWidth: '300px',
-              maxHeight: '300px',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
+              maxWidth: '500px',
+              gap: '$4',
+              transition: 'all 0.3s ease-in-out',
             }}
           >
-            <Image
-              src={item.image.url}
-              width={300}
-              height={300}
-              alt={item.image.name}
-            />
+            <Text colors="green900" size="2xl">
+              <strong>{document.name}</strong>
+            </Text>
+            {isView && (
+              <iframe src={document.media.url} width="100%" height="500px" />
+            )}
+            {!isView && <Image src={DocumentImage} alt="Document" />}
+            <Button onClick={() => setIsView(!isView)}>
+              <Text size="sm" color="white">
+                Visualizar
+              </Text>
+            </Button>
           </CarouselComponent.Content>
-          <CarouselComponent.Legend></CarouselComponent.Legend>
         </CarouselComponent.Item>
       ))}
     </Carousel>

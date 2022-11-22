@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { useTheme } from 'next-themes'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { BackgroundNoCircle } from '../../components/BackgroundSession'
@@ -25,7 +24,6 @@ interface ProductProps {
 
 export default function Product({ products }: ProductProps) {
   const { isFallback } = useRouter()
-  const { theme } = useTheme()
 
   if (isFallback) return <p>Carregando...</p>
 
@@ -34,7 +32,7 @@ export default function Product({ products }: ProductProps) {
       <Hero title="Detalhes do Produtos">
         <Image src={HeroProduct} alt="" />
       </Hero>
-      <BackgroundNoCircle theme={theme}>
+      <BackgroundNoCircle>
         <ProductComponent product={products} />
       </BackgroundNoCircle>
     </>
@@ -62,8 +60,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     .then((response) => {
       return response.data
     })
-
-  console.log(products.data.attributes.product[0])
 
   return {
     props: {
